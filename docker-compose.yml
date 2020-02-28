@@ -7,8 +7,12 @@ services:
     network_mode: bridge
     ports:
       - "3000:3000"
+    volumes:
+      - $HOME/docker/apps/signalk/.signalk:/home/node/.signalk
+      - /dev:/dev/hostdev
     restart: unless-stopped
     entrypoint: /home/node/signalk/bin/signalk-server --securityenabled
+    privileged: true
     logging:
       options:
         max-size: 10m
