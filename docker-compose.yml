@@ -1,0 +1,14 @@
+version: "2"
+services:
+  signalk-server-node:
+    build: .
+    image: signalk-server-node
+    container_name: signalk-server-node
+    network_mode: bridge
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    entrypoint: /home/node/signalk/bin/signalk-server --securityenabled
+    logging:
+      options:
+        max-size: 10m
