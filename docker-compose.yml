@@ -9,7 +9,7 @@ services:
       - "3000:3000"
       - "3443:3443"
     volumes:
-      - $HOME/docker/apps/signalk/.signalk:/home/node/.signalk
+      - $PWD/.signalk:/home/node/.signalk
       - /dev:/dev/hostdev
     restart: unless-stopped
     entrypoint: /home/node/signalk/bin/signalk-server --securityenabled
