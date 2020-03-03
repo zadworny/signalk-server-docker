@@ -10,9 +10,6 @@ WORKDIR /home/node/
 RUN git clone https://github.com/SignalK/signalk-server-node.git signalk
 
 WORKDIR /home/node/signalk
-RUN git reset --hard
-RUN git pull
-
 RUN npm install
 RUN npm run build
 RUN mkdir -p /home/node/.signalk
