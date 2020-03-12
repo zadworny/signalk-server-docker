@@ -1,5 +1,6 @@
-ARG IMAGE_BASE=node
-FROM $IMAGE_BASE:10
+FROM node:10
+#ARG IMAGE_BASE=node
+#FROM $IMAGE_BASE:10
 
 RUN apt-get update && apt-get -y install libavahi-compat-libdnssd-dev
 RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi node

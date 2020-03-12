@@ -8,8 +8,9 @@ services:
     ports:
       - "3000:3000"
       - "3443:3443"
+      - "3001:3001"
     volumes:
-      - $PWD/.signalk:/home/node/.signalk
+      - $PWD/../signalk_conf:/home/node/.signalk
       - /dev:/dev/hostdev
     restart: unless-stopped
     entrypoint: /home/node/signalk/bin/signalk-server --securityenabled
