@@ -1,9 +1,9 @@
 FROM node:10
-#ARG IMAGE_BASE=node
-#FROM $IMAGE_BASE:10
 
-RUN apt-get update && apt-get -y install libavahi-compat-libdnssd-dev
+RUN apt-get update && apt-get -y install libavahi-compat-libdnssd-dev sudo
 RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi node
+
+RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER node
 RUN mkdir -p /home/node/

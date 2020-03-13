@@ -8,7 +8,7 @@ services:
     ports:
       - "3000:3000"
       - "3443:3443"
-      - "3001:3001"
+      - "5010:5010/udp"
     volumes:
       - $PWD/../signalk_conf:/home/node/.signalk
       - /dev:/dev/hostdev
