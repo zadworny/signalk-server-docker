@@ -9,6 +9,7 @@ services:
       - "3000:3000"
       - "3443:3443"
       - "5010:5010/udp"
+      - "10110:10110"
     volumes:
       - $PWD/../signalk_conf:/home/node/.signalk
       - /dev:/dev/hostdev
