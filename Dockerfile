@@ -1,4 +1,4 @@
-FROM node:10.20-slim
+FROM node:14-slim
 
 RUN apt-get update && apt-get -y install libavahi-compat-libdnssd-dev sudo git python3 build-essential
 RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi node
