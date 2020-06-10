@@ -31,6 +31,18 @@ services:
       options:
         max-size: 10m
 
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    restart: unless-stopped
+    network_mode: "host"
+    links:
+      - influxdb
+    volumes:
+      - $PWD/../signalk_volume/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
   signalk-server-node:
     build: .
     image: signalk-server-node
