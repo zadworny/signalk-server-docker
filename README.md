@@ -1,8 +1,11 @@
 # signalk-server-node
-signalk-server-node, Influxdb and Grafana in docker-compose 
+signalk-server-node, Telegraf, Influxdb and Grafana in docker-compose 
 
-- Run run_me_1st.sh when installing SignalK, Influxdb and Grafana first time
-- Run update.sh when need to be updated SignalK, Influxdb and Grafana
+1st Intallation:
+- Run run_me_1st.sh when installing SignalK, Telegraf, Influxdb and Grafana at first time
+
+Update/Upgarde:
+- Run update.sh when need to be updated SignalK, Telegraf, Influxdb or Grafana
 
 Signalk .signalk -folder is located $PWD/../signalk_conf (settings, apps, etc...)
-Influxdb and Grafana data/conf folders are located $PWD/../signalk_volume 
+Telegraf, Influxdb and Grafana folders are located $PWD/../signalk_volume
