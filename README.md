@@ -1,4 +1,4 @@
-# signalk-server-node
+# SignalK, Telegraf, Influxdb and Grafana
 signalk-server-node, Telegraf, Influxdb and Grafana in docker-compose 
 
 1st Intallation:
