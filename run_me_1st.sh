@@ -13,6 +13,9 @@ docker rm signalk-server-node
 mkdir -p $PWD/../signalk_volume/influxdb
 mkdir -p $PWD/../signalk_volume/grafana/data
 mkdir -p $PWD/../signalk_volume/grafana/conf
+mkdir -p $PWD/../signalk_volume/telegraf
+cp telegraf.conf $PWD/../signalk_volume/telegraf/telegraf.conf
+
 docker cp grafana:/var/lib/grafana/. $PWD/../signalk_volume/grafana/data
 docker cp grafana:/usr/share/grafana/conf/. $PWD/../signalk_volume/grafana/conf
 docker stop grafana
