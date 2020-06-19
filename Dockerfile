@@ -9,8 +9,11 @@ USER node
 RUN mkdir -p /home/node/
 WORKDIR /home/node/
 RUN git clone https://github.com/SignalK/signalk-server-node.git signalk
-
 WORKDIR /home/node/signalk
+
+# Uncomment if you want specific 
+# RUN git fetch && git fetch --tags
+# RUN git checkout v1.30.0
 
 RUN npm install
 RUN npm run build
