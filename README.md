@@ -24,7 +24,7 @@ Port locations:
 - Grafana 3001
 - Influxdb 8086
 
-Telegraf has dummy telegraf.conf installed after rum_me_1st.sh was run. Edit configuration according to your needs and restart docker-compose
+Telegraf has dummy telegraf.conf installed after run_me_1st.sh was run. Edit configuration according to your needs and restart docker-compose
 
 Manual installation
 - docker-compose build .
