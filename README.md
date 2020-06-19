@@ -18,6 +18,3 @@ signalk-server-node, Telegraf, Influxdb and Grafana in docker-compose
 
 Update/Upgarde:
 - Run update.sh when need to be updated SignalK, Telegraf, Influxdb or Grafana
-
-Signalk .signalk -folder is located $PWD/../signalk_conf (settings, apps, etc...)
-Telegraf, Influxdb and Grafana folders are located $PWD/../signalk_volume
