@@ -36,3 +36,5 @@ Stop:
 
 Restart:
 - docker-compose restart
+
+Test on Intel/AMD (x86_64) and ARM64 (aarch64) platforms.
