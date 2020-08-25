@@ -9,7 +9,7 @@ USER node
 RUN mkdir -p /home/node/
 WORKDIR /home/node/
 # RUN git clone https://github.com/KEGustafsson/signalk-server-node.git signalk
-RUN git clone https://github.com/SignalK/signalk-server-node.git signalk
+RUN git clone https://github.com/SignalK/signalk-server.git signalk
 
 WORKDIR /home/node/signalk
 
