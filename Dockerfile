@@ -8,7 +8,7 @@ RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER node
 RUN mkdir -p /home/node/
 WORKDIR /home/node/
-RUN git clone https://github.com/SignalK/signalk-server-node.git signalk
+RUN git clone https://github.com/SignalK/signalk-server.git signalk
 WORKDIR /home/node/signalk
 
 # Uncomment if you want specific tag instead of latest
