@@ -1,5 +1,5 @@
 # SignalK, Telegraf, Influxdb and Grafana
-Signalk-server-node, Telegraf, Influxdb and Grafana in docker-compose 
+Signalk-server, Telegraf, Influxdb and Grafana in docker-compose 
 ```bash
 ├── signalk
 │   └── signalk docker files located here 
