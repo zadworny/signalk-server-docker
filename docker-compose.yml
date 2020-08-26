@@ -1,9 +1,9 @@
 version: "2.2"
 
 services:
-  signalk-server-node:
+  signalk-server:
     build: .
-    container_name: signalk-server-node
+    container_name: signalk-server
     restart: unless-stopped
     network_mode: host
     volumes:
