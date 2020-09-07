@@ -1,6 +1,6 @@
 FROM node:10-slim
 
-RUN apt-get update && apt-get -y install sudo git python3 python build-essential
+RUN apt-get update && apt-get -y install sudo git python3 python build-essential libavahi-compat-libdnssd-dev
 RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi node
 
 RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -24,6 +24,16 @@ RUN git merge --no-commit --no-ff origin/master
 RUN npm install
 RUN npm run build
 RUN mkdir -p /home/node/.signalk
+
+#server-admin-ui
+WORKDIR /home/node/signalk/packages/server-admin-ui
+RUN npm i
+RUN npm run prepublishOnly
+USER root
+RUN npm link
+WORKDIR /home/node/signalk
+RUN npm link @signalk/server-admin-ui
+USER node
 
 EXPOSE 3000
 ENV IS_IN_DOCKER true
