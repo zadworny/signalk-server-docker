@@ -2,7 +2,7 @@ version: "2.2"
 
 services:
   influxdb:
-    image: influxdb:latest
+    image: influxdb:1.8
     container_name: influxdb
     restart: unless-stopped
     network_mode: bridge
@@ -15,7 +15,7 @@ services:
         max-size: 10m
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     container_name: grafana
     restart: unless-stopped
     network_mode: bridge
@@ -33,7 +33,7 @@ services:
 
   telegraf:
     container_name: telegraf
-    image: telegraf
+    image: telegraf:latest
     restart: unless-stopped
     network_mode: host
     environment:
@@ -46,6 +46,9 @@ services:
       - /sys:/rootfs/sys:ro
       - /proc:/rootfs/proc:ro
       - /etc:/rootfs/etc:ro
+    logging:
+      options:
+        max-size: 10m
 
   signalk-server:
     build: .
@@ -56,7 +59,7 @@ services:
     volumes:
       - $PWD/../signalk_conf:/home/node/.signalk
       - /dev:/dev/hostdev
-    entrypoint: /home/node/signalk/bin/signalk-server --securityenabled
+    entrypoint: sh /home/node/signalk/startup.sh
     privileged: true
     logging:
       options:

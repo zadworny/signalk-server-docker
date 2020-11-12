@@ -1,7 +1,8 @@
-FROM node:10-slim
+FROM node:12-slim
 
-RUN apt-get update && apt-get -y install sudo git python3 python build-essential libavahi-compat-libdnssd-dev
-RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi node
+RUN apt-get update && apt-get -y install apt-utils
+RUN apt-get update && apt-get -y install sudo git python3 python build-essential avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan libavahi-compat-libdnssd-dev sysstat procps
+RUN groupadd -r i2c -g 998 && groupadd -r spi -g 999 && usermod -a -G dialout,i2c,spi,netdev node
 
 RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -14,6 +15,19 @@ WORKDIR /home/node/signalk
 # Uncomment if you want specific tag instead of latest
 # RUN git fetch && git fetch --tags
 # RUN git checkout v1.30.0
+
+# Startup script
+COPY --chown=node startup.sh startup.sh
+RUN chmod +x startup.sh
+COPY --chown=root avahi/avahi-dbus.conf /etc/dbus-1/system.d/avahi-dbus.conf
+
+USER root
+RUN mkdir -p /var/run/dbus/
+RUN chmod -R 777 /var/run/dbus/
+RUN mkdir -p /var/run/avahi-daemon/
+RUN chmod -R 777 /var/run/avahi-daemon/
+RUN chown -R avahi:avahi /var/run/avahi-daemon/
+USER node
 
 RUN npm install
 RUN npm run build
